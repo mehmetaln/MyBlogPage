@@ -11,6 +11,7 @@ class Blog(models.Model):
     date_now = models.DateTimeField(("Tarih - Saat"), auto_now_add=True)
     likes=    models.ManyToManyField(User,related_name="user2", verbose_name=("Beğenen Kullanıcılar"), blank=True)
     comment_num = models.IntegerField(("Yorum Sayısı"), default=0)
+    # likes_num = models.IntegerField(("Begeni Sayısı"), default=0)
 
     def __str__(self):
         return self.title # admin apane linde obje ismi gözükmesi için

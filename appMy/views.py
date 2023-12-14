@@ -36,6 +36,8 @@ def detailPage(request, bid):
         
         blog.comment_num +=1
         blog.save()
+        
+   
    context = {
       "blog":blog,
       "comment_list":comment_list
