@@ -17,3 +17,15 @@ def indexPage(request):
     }
     
     return render(request,"index.html",context)
+
+def detailPage(request, bid):
+   blog = Blog.objects.get(id=bid)
+   comment_list = Comment.objects.filter(blog__id=bid)
+   
+      
+   context = {
+      "blog":blog,
+      "comment_list":comment_list
+   
+   }
+   return render(request, "detail.html", context)

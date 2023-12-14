@@ -22,6 +22,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', indexPage)
+    path('', indexPage),
+    path('detail/<bid>', detailPage)
 ] + static (settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
  
