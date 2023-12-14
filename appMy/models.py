@@ -9,14 +9,11 @@ class Blog(models.Model):
     text= models.TextField(("Blog Yazisi"))
     image= models.ImageField(("Resim"), upload_to="blog")
     date_now = models.DateTimeField(("Tarih - Saat"), auto_now_add=True)
-    likes=    models.ManyToManyField(User,related_name="user2", verbose_name=("Beğenen Kullanıcılar"))
-    
- 
- 
- 
- 
+    likes=    models.ManyToManyField(User,related_name="user2", verbose_name=("Beğenen Kullanıcılar"), blank=True)
+    comment_num = models.IntegerField(("Yorum Sayısı"), default=0)
+
     def __str__(self):
-        return self.title # admin apanelinde obje ismi gözükmesi için
+        return self.title # admin apane linde obje ismi gözükmesi için
     
     
 class Comment(models.Model):
