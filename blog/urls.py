@@ -25,4 +25,3 @@ urlpatterns = [
     path('', indexPage),
     path('detail/<bid>', detailPage)
 ] + static (settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
- 
