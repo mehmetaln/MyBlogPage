@@ -3,8 +3,14 @@ from django.contrib.auth.models import User # Kullanıc ile ilgili tüm ulaşıl
 
 # Create your models here.
 
+class Category(models.Model):
+    title = models.CharField(("Kategori"), max_length=50)
+    slug = models.SlugField(("Slug"))#türkçe karekterleri ingilzice karekterlere dönüştüren bir araç
+    def __str__(self):
+        return self.title
 class Blog(models.Model):
     user = models. ForeignKey(User, verbose_name=("Kullanıcı"), on_delete=models.CASCADE)
+    category =models.ForeignKey(Category, verbose_name=("Kategori"), null = True, on_delete=models.CASCADE) # foreinkey bize seçici bir seçme özelliği verir
     title=models.CharField(("Başlık)"),max_length=50)
     text= models.TextField(("Blog Yazisi"))
     image= models.ImageField(("Resim"), upload_to="blog")
@@ -26,4 +32,14 @@ class Comment(models.Model):
     def __str__(self):
         return self.blog.title    
     
+    
+    
+class Contact(models.Model):
+    title = models.CharField(("Konu"), max_length=50)
+    text = models.TextField(("Mesaj"))
+    email = models.CharField(("Email"), max_length=50)
+    fullname = models.CharField(("Ad-Soyad"), max_length=50)
+    
+    def __str__(self):
+        return self.title
     

@@ -3,51 +3,7 @@
 {% load static %}    
 {% block body %}
 <main>
-  <!-- CAROUSEL START -->
-  <div id="carouselExampleIndicators" class="carousel slide" data-mdb-ride="carousel" data-mdb-carousel-init>
-      <div class="carousel-indicators">
-        <button
-          type="button"
-          data-mdb-target="#carouselExampleIndicators"
-          data-mdb-slide-to="0"
-          class="active"
-          aria-current="true"
-          aria-label="Slide 1"
-        ></button>
-        <button
-          type="button"
-          data-mdb-target="#carouselExampleIndicators"
-          data-mdb-slide-to="1"
-          aria-label="Slide 2"
-        ></button>
-        <button
-          type="button"
-          data-mdb-target="#carouselExampleIndicators"
-          data-mdb-slide-to="2"
-          aria-label="Slide 3"
-        ></button>
-      </div>
-      <div class="carousel-inner" style="height: 400px;">
-        <div class="carousel-item active">
-          <img src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp" class="d-block w-100" alt="Wild Landscape"/>
-        </div>
-        <div class="carousel-item">
-          <img src="https://mdbcdn.b-cdn.net/img/new/slides/042.webp" class="d-block w-100" alt="Camera"/>
-        </div>
-        <div class="carousel-item">
-          <img src="https://mdbcdn.b-cdn.net/img/new/slides/043.webp" class="d-block w-100" alt="Exotic Fruits"/>
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-mdb-target="#carouselExampleIndicators" data-mdb-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-mdb-target="#carouselExampleIndicators" data-mdb-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-  <!-- CAROUSEL END -->
+ 
   <div class="container">
       <div class="row my-4">
           <!-- BLOG KART START -->
@@ -87,6 +43,44 @@
           </div>
           <!-- BLOG KART END -->
 
+          <div class="col-4">
+            <ul class="list-group list-group-light">
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                  <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px"
+                    class="rounded-circle" />
+                  <div class="ms-3">
+                    <p class="fw-bold mb-1">John Doe</p>
+                    <p class="text-muted mb-0">john.doe@gmail.com</p>
+                  </div>
+                </div>
+                <span class="badge rounded-pill badge-success">Active</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                  <img src="https://mdbootstrap.com/img/new/avatars/6.jpg" class="rounded-circle" alt=""
+                    style="width: 45px; height: 45px" />
+                  <div class="ms-3">
+                    <p class="fw-bold mb-1">Alex Ray</p>
+                    <p class="text-muted mb-0">alex.ray@gmail.com</p>
+                  </div>
+                </div>
+                <span class="badge rounded-pill badge-primary">Onboarding</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                  <img src="https://mdbootstrap.com/img/new/avatars/7.jpg" class="rounded-circle" alt=""
+                    style="width: 45px; height: 45px" />
+                  <div class="ms-3">
+                    <p class="fw-bold mb-1">Kate Hunington</p>
+                    <p class="text-muted mb-0">kate.hunington@gmail.com</p>
+                  </div>
+                </div>
+                <span class="badge rounded-pill badge-warning">Awaiting</span>
+              </li>
+            </ul>
+          </div>
+
           {% include 'partials/_sidenav.html' %}
       </div>
   </div>
@@ -105,17 +99,3 @@
       }
   </style>
 {% endblock head %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-    

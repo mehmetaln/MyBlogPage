@@ -18,3 +18,8 @@ class CommentAdmin(admin.ModelAdmin):
 
     list_display = ('blog', 'user','date_now')
     search_fields = ('blog__title','user__username')
+
+admin.site.register(Contact)
+admin.site.register(Category)
+
+ 

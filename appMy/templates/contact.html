@@ -4,9 +4,10 @@
 {% block body %}
     <main>
                 <!--Section: Leave a reply (Not Logged In User)-->
-                <section>
-                    <div class="reply-form">
-                       <h1 class="section-heading">İletişim </h1>
+                <section class="container">
+                    <form method="POST" class="reply-form">
+                        {% csrf_token %}
+                        <h1 class="section-heading">İletişim </h1>
                        <h4>İletişime Geç: <span>
                              <!--Facebook-->
                              <a href="https://www.facebook.com/mdbootstrap" target="_blank"
@@ -21,33 +22,32 @@
                           </span> <br><br>or:</h4>
 
                        <div class="md-form">
-                          <i class="fa fa-user prefix"></i>
-                          <input type="text" id="form22" class="form-control">
-                          <label for="form42">Your name</label>
+                          
+                           <label for="form42"><i class="fa fa-user prefix"></i> Adınız - Soyadınız </label>
+                          <input name="fullname" type="text" id="form22" class="form-control">
                        </div>
 
                        <div class="md-form">
-                          <i class="fa fa-envelope prefix"></i>
-                          <input type="text" id="form32" class="form-control">
-                          <label for="form34">Your email</label>
+                          
+                           <label for="form34"><i class="fa fa-envelope prefix"></i> Email</label>
+                           <input name="email" type="text" id="form32" class="form-control">
                        </div>
 
                        <div class="md-form">
-                          <i class="fa fa-home prefix"></i>
-                          <input type="text" id="form32" class="form-control">
-                          <label for="form34">Your website</label>
+                          
+                           <label for="form34"><i class="fa fa-home prefix"></i> Konu</label>
+                          <input name="subject" type="text" id="form32" class="form-control">
                        </div>
 
                        <div class="md-form">
-                          <i class="fa fa-pencil prefix"></i>
-                          <textarea type="text" id="form8" class="md-textarea"></textarea>
-                          <label for="form8">Your message</label>
+                            <label for="form8"><i class="fa fa-pencil prefix"></i> Mesajınız</label> 
+                            <textarea name="text" type="text" id="form8" class="form-control"></textarea>
                        </div>
 
                        <div class="text-center">
-                          <button class="btn btn-primary">Submit</button>
+                          <button type="submit" class="btn btn-primary">Gönder</button>
                        </div>
-                    </div>
+                    </form>
                  </section> 
     </main>
 {% endblock body %}
