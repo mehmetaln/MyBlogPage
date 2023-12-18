@@ -5,6 +5,7 @@ from django.contrib.auth.models import User # Kullanıc ile ilgili tüm ulaşıl
 
 class Category(models.Model):
     title = models.CharField(("Kategori"), max_length=50)
+    color = models.CharField(("Renk"), max_length=50, null =True)
     slug = models.SlugField(("Slug"))#türkçe karekterleri ingilzice karekterlere dönüştüren bir araç
     def __str__(self):
         return self.title

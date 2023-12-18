@@ -3,7 +3,6 @@
 {% load static %}    
 {% block body %}
 <main>
- 
   <div class="container">
       <div class="row my-4">
           <!-- BLOG KART START -->
@@ -44,44 +43,24 @@
           <!-- BLOG KART END -->
 
           <div class="col-4">
+            <!-- arama methodları GET İLE yazılır genelde -->
+            <form method="GET" class="d-flex"> 
+              <input class="form-control" type="search" name ="query" placeholder="Ara">
+              <button class="btn btn-secondary " type="submit" style="margin-left: -20px;">Ara</button>
+             </form>
             <ul class="list-group list-group-light">
-              <li class="list-group-item d-flex justify-content-between align-items-center">
-                <div class="d-flex align-items-center">
-                  <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px"
-                    class="rounded-circle" />
-                  <div class="ms-3">
-                    <p class="fw-bold mb-1">John Doe</p>
-                    <p class="text-muted mb-0">john.doe@gmail.com</p>
+              {% for i in category_list %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <div>
+                    <div  class="fw-bold mb-1"style="color: {{ i.color }};">
+                      <span  class="badge rounded-pill badge-success"></span>
+                      {{ i.title }}
+                    </div>
                   </div>
-                </div>
-                <span class="badge rounded-pill badge-success">Active</span>
-              </li>
-              <li class="list-group-item d-flex justify-content-between align-items-center">
-                <div class="d-flex align-items-center">
-                  <img src="https://mdbootstrap.com/img/new/avatars/6.jpg" class="rounded-circle" alt=""
-                    style="width: 45px; height: 45px" />
-                  <div class="ms-3">
-                    <p class="fw-bold mb-1">Alex Ray</p>
-                    <p class="text-muted mb-0">alex.ray@gmail.com</p>
-                  </div>
-                </div>
-                <span class="badge rounded-pill badge-primary">Onboarding</span>
-              </li>
-              <li class="list-group-item d-flex justify-content-between align-items-center">
-                <div class="d-flex align-items-center">
-                  <img src="https://mdbootstrap.com/img/new/avatars/7.jpg" class="rounded-circle" alt=""
-                    style="width: 45px; height: 45px" />
-                  <div class="ms-3">
-                    <p class="fw-bold mb-1">Kate Hunington</p>
-                    <p class="text-muted mb-0">kate.hunington@gmail.com</p>
-                  </div>
-                </div>
-                <span class="badge rounded-pill badge-warning">Awaiting</span>
-              </li>
+                </li>
+              {% endfor %}
             </ul>
           </div>
-
-          {% include 'partials/_sidenav.html' %}
       </div>
   </div>
 </main>

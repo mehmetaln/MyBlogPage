@@ -25,5 +25,5 @@ urlpatterns = [
     path('', indexPage),
     path('detail/<bid>', detailPage),
     path('iletisim/',contactPage),
-    path('all',blogallPage),
+    path('all/',blogallPage),
 ] + static (settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
