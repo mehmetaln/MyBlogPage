@@ -1,5 +1,9 @@
    {% extends 'base.html' %}
    {% load static %}
+   {% block head %}   
+   <!-- Customizer -->
+   <link rel="stylesheet" href="https://mdbootstrap.com/live/_MDB/css/customizer.min.css">
+{% endblock head %}
 
    {% block body %}
       <main>
@@ -136,10 +140,8 @@
             </div>
          </div>
       </main>
+
    {% endblock body %}
-   
-   {% block head %}   
-      <!-- Customizer -->
-      <link rel="stylesheet" href="https://mdbootstrap.com/live/_MDB/css/customizer.min.css">
-   {% endblock head %}
+
+
       
