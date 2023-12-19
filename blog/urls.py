@@ -22,13 +22,13 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', indexPage),
-    path('detail/<bid>', detailPage),
-    path('iletisim/',contactPage),
-    path('all/',blogallPage),
-    path('all/<cslug>',blogallPage),
+    path('', indexPage, name="indexPage"),
+    path('detail/<bid>', detailPage, name="detailPage"),
+    path('iletisim/',contactPage, name="contactPage"), 
+    path('all/',blogallPage, name="blogallPage"),
+    path('all/<cslug>',blogallPage, name="blogallPage2"),
     # USER 
-    path('login',loginPage),
+    path('login',loginPage, name="loginPage"),
     
 
 ] + static (settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

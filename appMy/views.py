@@ -1,7 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect # yönlendirme redirect istediğimiz sayfada kullanabiliyoruz 
 from appMy.models import *
 from django.db.models import Count # count import etmek için count sayma işlemlerinde işimze yarıyor
 from django.db.models import Q     # veya (|) baglacını kullanmamız ayarayan  kütüphane
+from django.contrib.auth import authenticate, login, logout    # auth tüm kullancı işlemlerini çekmemize yarayan kütüphane
+from django.contrib.auth.models import User    # Django kullanıcı için
+from django.contrib import messages # Hata mesajı gibi şeyleri almamıza ayarayan kütüphane kullanıcıya mesaj göndermemize yarar 
+
 
 # Create your views here.
 
@@ -101,5 +105,22 @@ def blogallPage(request, cslug=None):
 # USER VİEVS
 
 def loginPage(request):
+    
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+        
+        user =authenticate(username =username, password=password) #Kullanıcın adı ve şifresi dogrumu degil kontrol etmemize yarar yanlışsa None döndürür
+        if user:
+            login(request, user)
+        # else:           hata mesajı olacak elsede şimdilik yok
+            return redirect ("indexPage")
+        
+        else: 
+           messages.error(request,"Kullanıcı adı veya Şifre yanlış")
+             # [] message bir listedir ve html? sayfasında for ile döndürülmelidir.
+             
+        
+    
     context= {}
     return render(request,"User/login.html",context)

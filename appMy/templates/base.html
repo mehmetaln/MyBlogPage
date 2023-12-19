@@ -21,11 +21,18 @@
 <body>
     {% include 'partials/_navbar.html' %}
     
+    
+    {% for i in messages %}
+      <div class="text-center p-3 text-white bg-danger">{{ i }}</div>
+      
+    {% endfor %}
+      
+    
     {% block body %}
          
     {% endblock body %}
          
-  <!-- Navbar -->
+  <!-- Navbar --> 
 <!-- MDB JS  -->
 <script type="text/javascript"src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"></script>
 </body>
