@@ -72,12 +72,17 @@ def contactPage(request):
 
 
 
-def blogallPage(request):
-    blog_list =Blog.objects.all().order_by('-id')
+def blogallPage(request, cslug=None):
+    
+    if cslug:
+        blog_list =Blog.objects.filter(category__slug = cslug).order_by('-id')
+    else:
+            
+        blog_list =Blog.objects.all().order_by('-id')
     category_list = Category.objects.all()
     
     context = {
          "blog_list": blog_list,
          "category_list": category_list
     }
-    return render(request, "blogall.html",context)
+    return render(request, "blogall.html",context)  

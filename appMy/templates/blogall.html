@@ -50,15 +50,15 @@
              </form>
             <ul class="list-group list-group-light">
               {% for i in category_list %}
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                  <div>
-                    <div  class="fw-bold mb-1"style="color: {{ i.color }};">
-                      <span  class="badge rounded-pill badge-success"></span>
-                      {{ i.title }}
-                    </div>
-                  </div>
-                </li>
-              {% endfor %}
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                 <div>
+                    <a href="/all/{{ i.slug }}" class="fw-bold mycategory text-dark">
+                       <span style="background-color: {{ i.color }};" class="badge rounded-pill badge-warning"> </span>
+                       {{ i.title }}
+                    </a>
+                 </div>
+              </li>
+           {% endfor %}
             </ul>
           </div>
       </div>
