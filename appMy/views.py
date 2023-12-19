@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from appMy.models import *
-from django.db.models import Count # count import etmek için 
+from django.db.models import Count # count import etmek için count sayma işlemlerinde işimze yarıyor
+from django.db.models import Q     # veya (|) baglacını kullanmamız ayarayan  kütüphane
 
 # Create your views here.
 
@@ -79,6 +80,14 @@ def blogallPage(request, cslug=None):
     else:
             
         blog_list =Blog.objects.all().order_by('-id')
+    
+    query = request.GET.get("query") 
+    # formu GET methodu   ile çkeiyoruz ve içerisinden get ile name = query çekiyoruz   
+    if query:
+        blog_list=Blog.objects.filter(  Q(title__icontains = query) | Q(text__icontains = query))  
+        # icontains buradaki işlevi title içerisindeki kelimlerden veya harflerden birini yazsak bile bulunur       
+        
+    
     category_list = Category.objects.all()
     
     context = {
@@ -86,3 +95,11 @@ def blogallPage(request, cslug=None):
          "category_list": category_list
     }
     return render(request, "blogall.html",context)  
+
+
+
+# USER VİEVS
+
+def loginPage(request):
+    context= {}
+    return render(request,"User/login.html",context)

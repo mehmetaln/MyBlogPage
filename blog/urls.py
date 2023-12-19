@@ -27,5 +27,8 @@ urlpatterns = [
     path('iletisim/',contactPage),
     path('all/',blogallPage),
     path('all/<cslug>',blogallPage),
+    # USER 
+    path('login',loginPage),
+    
 
 ] + static (settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
