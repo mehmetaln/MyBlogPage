@@ -89,7 +89,7 @@ def blogallPage(request, cslug=None):
     # formu GET methodu   ile çkeiyoruz ve içerisinden get ile name = query çekiyoruz   
     if query:
         blog_list=Blog.objects.filter(  Q(title__icontains = query) | Q(text__icontains = query))  
-        # icontains buradaki işlevi title içerisindeki kelimlerden veya harflerden birini yazsak bile bulunur       
+        # icontains buradaki işlevi title içerisindeki kelimlerden veya harflerden birini yazsak bile bulunur      Q veya bağlacını kullanmamıza yarar
         
     
     category_list = Category.objects.all()
@@ -124,3 +124,63 @@ def loginPage(request):
     
     context= {}
     return render(request,"User/login.html",context)
+
+
+def logoutUser(request):
+    logout(request) # Çıkış fonksiyonumuz
+    return redirect("loginPage")
+
+def registerPage(request):
+    
+    if request.method == "POST":
+        fname = request.POST.get("fname")
+        lname = request.POST.get("lname")
+        username = request.POST.get("username")
+        email = request.POST.get("email")
+        password1 = request.POST.get("password1")
+        password2 = request.POST.get("password2")
+        
+        # Böyle bir kullanıcı yoksa kaydet var mı diye kontrol et
+        boolup =boolmum =False 
+        boolchar = True
+        if password1 == password2:
+            nonchar = ["*;:@?.,"]
+            for i in password1:
+                if i.isupper():
+                    boolup = True
+                if i.isnumeric():
+                    boolmum = True
+                if i in nonchar:
+                    boolchar = False
+                        
+            if boolup and boolmum and boolchar and le(password1)>=6:
+
+            
+                
+                if not User.objects.filter(username=username).exists(): # Exists bize içerisinde bir kullanıcı varmı yokmu dşye kontrol ediyor varsa True dönderiri yoksa False
+                    if not User.objects.filter(email=email).exists():   # Not burada True degerini false çevirmemize yarıyor yani bölyel bir mail veya kullanıcı olmadığı için kayıt yaoamay ahazır demke istiyor bize
+                        # Kaydetme işlemleri
+                        # Kullanıcı kaydederken bu şekilde yazıyoruz tğm şartlar sağlanırsa kayıt oluşur 
+                        user = User.objects.create_user(first_name = fname, last_name = lname, email=email, username=username, password = password1 )   
+                        user.save()
+                        return redirect("loginPage")
+        
+                    else:
+                        messages.error(request,"Bu email zaten kullanılıyor!!")
+                else:
+                    messages.error(request,"Bu Kullanıcı adı  zaten kullanılıyor!!")
+            else: 
+                messages.error(request, "Şifrenizde büyük harf ,rakam ve en az 6 karekterden oluşmalı")
+                messages.error(request, f"{nonchar} bu karekterleri kullanmayınız")
+        else:
+            messages.error(request,"Şifreler Uyuşmuyor!!")
+    
+    
+    
+    
+    
+    
+    
+    
+    context={}
+    return render(request, "user/register.html", context)

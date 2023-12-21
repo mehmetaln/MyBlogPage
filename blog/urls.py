@@ -29,6 +29,9 @@ urlpatterns = [
     path('all/<cslug>',blogallPage, name="blogallPage2"),
     # USER 
     path('login',loginPage, name="loginPage"),
+    path('logout/user',logoutUser, name="logoutUser"), #kullanıcıya çıkış yaptrımak için kullandığımız fonksiyon url
+    path('register/',registerPage, name="registerPage"),
+    
     
 
 ] + static (settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
