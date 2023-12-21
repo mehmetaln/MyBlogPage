@@ -152,11 +152,7 @@ def registerPage(request):
                     boolmum = True
                 if i in nonchar:
                     boolchar = False
-                        
             if boolup and boolmum and boolchar and le(password1)>=6:
-
-            
-                
                 if not User.objects.filter(username=username).exists(): # Exists bize içerisinde bir kullanıcı varmı yokmu dşye kontrol ediyor varsa True dönderiri yoksa False
                     if not User.objects.filter(email=email).exists():   # Not burada True degerini false çevirmemize yarıyor yani bölyel bir mail veya kullanıcı olmadığı için kayıt yaoamay ahazır demke istiyor bize
                         # Kaydetme işlemleri
@@ -164,7 +160,6 @@ def registerPage(request):
                         user = User.objects.create_user(first_name = fname, last_name = lname, email=email, username=username, password = password1 )   
                         user.save()
                         return redirect("loginPage")
-        
                     else:
                         messages.error(request,"Bu email zaten kullanılıyor!!")
                 else:
